@@ -1,0 +1,4 @@
+POST:localhost:4000/todo/deletemany **** body {"todoIds": ["648c7d065e2d2bd252423f0e", "648c7d0b5e2d2bd252423f10"]}
+POST:localhost:4000/todo/create **** body {"title":"TITLE_here","content": "here we go"}
+GET:localhost:4000/todo
+DELET:localhost:4000/todo/648c7d065e2d2bd252423f0e
