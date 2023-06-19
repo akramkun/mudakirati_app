@@ -6,9 +6,9 @@ class CustomDateTimeConverter {
     return s;
   }
 
-  String calculateDifference(String original) {
+  String calculateDifference(String over) {
     //parse RFC3339 to datetime
-    DateTime date = DateTime.parse(_ignoreSubMicro(original));
+    DateTime date = DateTime.parse(_ignoreSubMicro(over));
     DateTime now = DateTime.now();
     int def = DateTime(date.year, date.month, date.day)
         .difference(DateTime(now.year, now.month, now.day))

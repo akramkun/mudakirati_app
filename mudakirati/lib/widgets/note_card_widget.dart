@@ -12,14 +12,16 @@ final _lightColors = [
 ];
 
 class NoteCardWidget extends StatelessWidget {
-  const NoteCardWidget({
+  NoteCardWidget({
     Key? key,
     required this.note,
     required this.index,
+    required this.isSelected,
   }) : super(key: key);
 
   final Note note;
   final int index;
+  bool isSelected = true;
 
   @override
   Widget build(BuildContext context) {
@@ -28,43 +30,67 @@ class NoteCardWidget extends StatelessWidget {
     //get date from datetime
     final time = CustomDateTimeConverter().calculateDifference(note.createdAt!);
 
-    return Card(
-      color: color,
-      child: Container(
-        constraints: const BoxConstraints(maxHeight: 200),
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              note.title!,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 04),
-            Flexible(
-              child: Text(
-                note.content!,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 5,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 17,
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Card(
+          color: color.withOpacity(isSelected ? 0.7 : 1),
+          child: Container(
+            constraints:
+                const BoxConstraints(maxHeight: 200, minWidth: double.infinity),
+            padding: const EdgeInsets.all(10),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  note.title!,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+                const SizedBox(height: 04),
+                Flexible(
+                  child: Text(
+                    note.content!,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 5,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 17,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  time,
+                  style: TextStyle(color: Colors.grey.shade700),
+                ),
+              ],
             ),
-            const SizedBox(height: 20),
-            Text(
-              time,
-              style: TextStyle(color: Colors.grey.shade700),
-            ),
-          ],
+          ),
         ),
-      ),
+        Visibility(
+          visible: isSelected,
+          child: const Align(
+            alignment: Alignment.bottomCenter,
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+              shadows: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 2,
+                  offset: Offset(3, 3),
+                ),
+              ],
+              size: 30,
+            ),
+          ),
+        )
+      ],
     );
   }
 }

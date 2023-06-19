@@ -14,6 +14,13 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
+  /*SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.orange, // navigation bar color
+    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarColor: Colors.orange, // status bar color
+    statusBarBrightness: Brightness.dark,
+    statusBarIconBrightness: Brightness.dark,
+  ));*/
   static const String title = 'Mudakirati';
 
   @override

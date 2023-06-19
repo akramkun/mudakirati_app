@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../db/notes_database.dart';
 import '../model/custom_datetime_converter.dart';
-import '../pages/notes_page.dart';
 import '../model/note.dart';
 
 class NoteDetailPage extends StatefulWidget {
@@ -115,10 +114,12 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
             setState(() => isLoading = false);
           });
 
-          await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const NotePage()),
-          );
+          // await Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => const NotePage()),
+          // );
+          // Navigator.of(context).popUntil((route) => route.isFirst);
+          Navigator.pop(context, 'done');
         },
       );
   Widget deleteButton() => IconButton(
@@ -134,10 +135,7 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
             setState(() => isLoading = false);
           });
 
-          await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const NotePage()),
-          );
+          Navigator.pop(context, 'done');
         },
       );
 }
