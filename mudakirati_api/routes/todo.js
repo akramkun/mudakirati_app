@@ -15,6 +15,7 @@ router.post('/create', (req, res) => {
     const todo = Todo({
         title: req.body.title,
         content: req.body.content,
+        reminder: req.body.reminder,
     });
     todo.save((err, todo) => {
         if (err) {
@@ -33,6 +34,7 @@ router.put('/:id', (req, res) => {
         todo.title = req.body.title ?? todo.title,
             todo.content = req.body.content ?? todo.content,
             todo.completed = req.body.completed ?? todo.completed,
+            todo.reminder = req.body.reminder ?? todo.reminder,
             todo.save((err, todo) => {
                 if (err) {
                     return res.json({ error: err });

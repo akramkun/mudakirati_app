@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import '../model/note.dart';
 
 class NotesDatabase {
-  final url = '192.168.8.107:4000';
+  final url = '192.168.8.110:4000';
   Future<List<Note>> getData() async {
     var response = await http.get(Uri.http(url, 'todo'));
     var jsonData = jsonDecode(response.body)["data"];

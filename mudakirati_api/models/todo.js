@@ -15,6 +15,10 @@ const todoSchema = new schema({
         type: Boolean,
         default: false,
     },
+    reminder: {
+        type: String,
+        default: 'non',
+    },
 
 }, {
     timestamps: true,
