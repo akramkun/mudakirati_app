@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
                 if (err) {
                     return res.json({ error: err });
                 }
-                return res.json({ date: todo });
+                return res.json({ data: todo });
             })
 
 
